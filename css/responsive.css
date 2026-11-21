@@ -1,0 +1,12 @@
+/* Mobile-first: base styles target phones; these add layout as space grows. */
+@media (max-width: 1099px) {
+  .menu-btn { display: grid; }
+  .nav { position: absolute; inset-inline: 0; top: 100%; flex-direction: column; margin: 0; padding: .5rem 1rem 1rem; background: var(--bg); border-bottom: 1px solid var(--border); display: none; }
+  .nav.open { display: flex; }
+  .nav a { padding: .85rem .5rem; min-height: 44px; }
+  .nav a[aria-current="true"] { box-shadow: none; color: var(--accent); }
+  .bar { position: relative; } .tools { margin-inline-start: auto; }
+}
+@media (min-width: 600px) { .grid.skills { grid-template-columns: repeat(2, 1fr); } .grid.projects { grid-template-columns: repeat(2, 1fr); } .foot { grid-template-columns: 2fr 1fr 1fr; } }
+@media (min-width: 860px) { .hero-grid { grid-template-columns: 1.4fr .8fr; } .hero-mark { display: grid; } .grid.skills { grid-template-columns: repeat(4, 1fr); } .grid.projects { grid-template-columns: repeat(2, 1fr); } .project.released .card-hit { grid-template-columns: 1.2fr 1fr; align-items: center; } .project.released .thumb { height: 100%; aspect-ratio: auto; border-radius: var(--r) 0 0 var(--r); } :root[dir="rtl"] .project.released .thumb { border-radius: 0 var(--r) var(--r) 0; } }
+@media (max-width: 380px) { .actions .btn { width: 100%; } }

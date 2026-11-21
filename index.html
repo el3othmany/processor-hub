@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دليل معالجات الهواتف الذكية (SoC) — Processor Hub</title>
+<meta name="description" content="دليل تعليمي منظم عن معالجات الهواتف الذكية (SoC): المكوّنات والفئات والأجيال والتصنيع والمعمارية واختبارات الأداء والأسعار.">
+<meta name="theme-color" content="#0d0e10">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Processor Hub">
+<meta property="og:title" content="دليل معالجات الهواتف الذكية (SoC) — Processor Hub">
+<meta property="og:description" content="دليل تعليمي منظم عن معالجات الهواتف الذكية (SoC): المكوّنات والفئات والأجيال والتصنيع والمعمارية واختبارات الأداء والأسعار.">
+<meta property="og:locale" content="ar_AR">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Processor Hub — SoC Guide">
+<!-- hreflang uses relative URLs until a real domain exists; replace with absolute URLs on deploy, and add canonical / og:url / og:image then. -->
+<link rel="alternate" hreflang="ar" href="./?lang=ar"><link rel="alternate" hreflang="en" href="./?lang=en"><link rel="alternate" hreflang="x-default" href="./">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/themes.css"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css">
+<script>
+(function () { try {
+  var th = localStorage.getItem("od-theme"); if (th !== "dark" && th !== "light") th = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = th;
+  var q = new URLSearchParams(location.search).get("lang"), l = localStorage.getItem("od-lang");
+  if (q === "ar" || q === "en") l = q; else if (l !== "ar" && l !== "en") { var n = (navigator.languages && navigator.languages[0] || navigator.language || "").toLowerCase(); l = n.indexOf("en") === 0 ? "en" : "ar"; }
+  document.documentElement.lang = l; document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+} catch (e) {} })();
+</script>
+<!--JSONLD-->
+<script type="application/ld+json" id="ld-article">{"@context":"https://schema.org","@type":"Article","headline":"دليل معالجات الهواتف الذكية (SoC)","description":"دليل تعليمي منظم عن معالجات الهواتف الذكية (SoC): المكوّنات والفئات والأجيال والتصنيع والمعمارية واختبارات الأداء والأسعار.","inLanguage":"ar","author":{"@type":"Person","name":"Othman Drioche"},"keywords":"SoC, smartphone processors, معالجات الهواتف","about":"Smartphone SoCs"}</script>
+<script type="application/ld+json" id="ld-breadcrumb">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Processor Hub"},{"@type":"ListItem","position":2,"name":"دليل معالجات الهواتف الذكية (SoC)"}]}</script>
+<script type="application/ld+json" id="ld-faq">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"ما الفرق بين المعالج (CPU) والـ SoC؟","acceptedAnswer":{"@type":"Answer","text":"الـ SoC شريحة تضم CPU وGPU وNPU وISP والمودم وغيرها. كلمة «معالج» في الهواتف تعني عادةً الـ SoC كاملاً."}},{"@type":"Question","name":"هل رقم النانومتر الأصغر أفضل دائماً؟","acceptedAnswer":{"@type":"Answer","text":"غالباً يعني كفاءة أعلى، لكنه ليس ضماناً؛ التصميم والمعمارية والتبريد والبرمجيات تؤثر بقدر كبير."}},{"@type":"Question","name":"هل أحتاج هاتفاً رائداً؟","acceptedAnswer":{"@type":"Answer","text":"ليس بالضرورة. للاستخدام اليومي تكفي الفئات المتوسطة غالباً؛ الرائدة مفيدة للألعاب الثقيلة والتصوير المتقدم وميزات الذكاء الاصطناعي."}},{"@type":"Question","name":"ماذا تعني درجة AnTuTu؟","acceptedAnswer":{"@type":"Answer","text":"رقم شامل لأداء الجهاز في اختبار واحد؛ مفيد للمقارنة التقريبية لكنه لا يعكس كل تجربة الاستخدام."}},{"@type":"Question","name":"لماذا يسخن الهاتف أثناء الألعاب؟","acceptedAnswer":{"@type":"Answer","text":"الأحمال الثقيلة ترفع استهلاك الطاقة والحرارة، فيخفّض النظام الأداء لحماية الجهاز (Thermal Throttling). التبريد جزء أساسي من التجربة."}},{"@type":"Question","name":"ما دور NPU عملياً؟","acceptedAnswer":{"@type":"Answer","text":"يسرّع مهام الذكاء الاصطناعي على الجهاز مثل تحسين الصور والترجمة والتعرف على الصوت دون استهلاك كبير للبطارية."}},{"@type":"Question","name":"هل أنوية Cortex هي نفسها في كل المعالجات؟","acceptedAnswer":{"@type":"Answer","text":"لا. كثير من الشركات تستخدم تصاميم Arm الجاهزة وتعدّل التكوين، وأخرى مثل Apple وQualcomm (Oryon) تصمم أنويتها الخاصة."}},{"@type":"Question","name":"هل الأرقام في الموقع نهائية؟","acceptedAnswer":{"@type":"Answer","text":"المواصفات الأساسية مأخوذة من إعلانات الشركات بحسب علمنا، لكن الأسعار وأي أرقام موسومة «تقريبي» تحتاج تحديثاً يدوياً قبل الاعتماد عليها."}}]}</script>
+<!--/JSONLD-->
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+</svg>
+<a class="skip" href="#main" data-i18n="skip">تخطي إلى المحتوى</a>
+<header class="site-header"><div class="wrap bar">
+  <a class="brand" href="#home" aria-label="OD — Processor Hub"><span class="mark">OD</span></a>
+  <nav id="site-nav" class="nav" data-i18n-aria="nav.label" aria-label="التنقل الرئيسي">
+    <a href="#soc" data-i18n="nav.soc"></a><a href="#tiers" data-i18n="nav.tiers"></a><a href="#generations" data-i18n="nav.gen"></a><a href="#architecture" data-i18n="nav.arch"></a><a href="#benchmarks" data-i18n="nav.bench"></a><a href="#pricing" data-i18n="nav.price"></a><a href="#compare" data-i18n="nav.compare"></a><a href="#faq" data-i18n="nav.faq"></a>
+  </nav>
+  <div class="tools">
+    <button id="lang-toggle" class="btn-ghost" type="button" data-i18n="ui.langSwitch" data-i18n-aria="ui.langLabel">English</button>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle theme"><svg class="ico sun" aria-hidden="true"><use href="#i-sun"/></svg><svg class="ico moon" aria-hidden="true"><use href="#i-moon"/></svg></button>
+    <button id="menu-toggle" class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-i18n-aria="ui.menu" aria-label="فتح القائمة"><span class="bars" aria-hidden="true"></span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section id="home" class="hero" aria-labelledby="h1"><div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 id="h1" class="h-hero" data-i18n="hero.title"></h1>
+      <p class="lead" data-i18n="hero.intro"></p>
+      <div class="actions"><a class="btn primary" href="#soc" data-i18n="hero.cta1"></a></div>
+    </div>
+    <div class="hero-mark" aria-hidden="true"><span class="od">OD</span><span class="cursor"></span></div>
+  </div></section>
+
+  <section id="soc" class="section" aria-labelledby="soc-t"><div class="wrap">
+    <p class="kicker mono">01</p><h2 id="soc-t" class="h-sec"><span data-i18n="soc.title"></span></h2>
+    <p class="sub" data-i18n="soc.sub"></p><p class="prose" data-i18n="soc.body"></p>
+    <ul id="components" class="grid three"></ul>
+  </div></section>
+
+  <section id="tiers" class="section alt" aria-labelledby="tiers-t"><div class="wrap">
+    <p class="kicker mono">02</p><h2 id="tiers-t" class="h-sec"><span data-i18n="tiers.title"></span></h2>
+    <p class="sub" data-i18n="tiers.sub"></p><ul id="tier-list" class="grid two"></ul>
+  </div></section>
+
+  <section id="generations" class="section" aria-labelledby="gen-t"><div class="wrap">
+    <p class="kicker mono">03</p><h2 id="gen-t" class="h-sec"><span data-i18n="gen.title"></span></h2>
+    <p class="sub" data-i18n="gen.sub"></p><div id="gen-box"></div>
+    <h3 class="sub-h" data-i18n="nodes.title"></h3><ul id="node-list" class="grid four"></ul><div id="node-note"></div>
+  </div></section>
+
+  <section id="architecture" class="section alt" aria-labelledby="arch-t"><div class="wrap">
+    <p class="kicker mono">04</p><h2 id="arch-t" class="h-sec"><span data-i18n="arch.title"></span></h2>
+    <p class="sub" data-i18n="arch.sub"></p><ul id="core-list" class="grid four"></ul><div id="arch-box"></div>
+  </div></section>
+
+  <section id="benchmarks" class="section" aria-labelledby="bench-t"><div class="wrap">
+    <p class="kicker mono">05</p><h2 id="bench-t" class="h-sec"><span data-i18n="bench.title"></span></h2>
+    <p class="sub" data-i18n="bench.sub"></p><ul id="bench-list" class="grid three"></ul><div id="bench-note"></div>
+  </div></section>
+
+  <section id="pricing" class="section alt" aria-labelledby="price-t"><div class="wrap">
+    <p class="kicker mono">06</p><h2 id="price-t" class="h-sec"><span data-i18n="price.title"></span></h2>
+    <p class="sub" data-i18n="price.sub"></p><div id="price-box"></div>
+  </div></section>
+
+  <section id="compare" class="section" aria-labelledby="cmp-t"><div class="wrap">
+    <p class="kicker mono">07</p><h2 id="cmp-t" class="h-sec"><span data-i18n="cmp.title"></span></h2>
+    <p class="sub" data-i18n="cmp.sub"></p><div id="chart-controls"></div><div id="chart-out" aria-live="polite"></div>
+  </div></section>
+
+  <section id="faq" class="section alt" aria-labelledby="faq-t"><div class="wrap narrow">
+    <p class="kicker mono">08</p><h2 id="faq-t" class="h-sec" data-i18n="faq.title"></h2><p class="sub" data-i18n="faq.sub"></p><div id="faq-list" class="faq-list" style="margin-top:2.5rem"></div>
+  </div></section>
+</main>
+
+<footer class="site-footer"><div class="wrap foot">
+  <div><a class="brand" href="#home" aria-label="OD"><span class="mark">OD</span></a><p class="fname">Processor Hub</p>
+    <p class="tiny muted">© <span id="year">2026</span> <span data-i18n="footer.rights"></span></p><p class="tiny muted" data-i18n="footer.id"></p></div>
+  <nav aria-labelledby="fn"><p id="fn" class="mono tiny" data-i18n="footer.nav"></p><a href="#soc" data-i18n="nav.soc"></a><a href="#compare" data-i18n="nav.compare"></a><a href="#faq" data-i18n="nav.faq"></a></nav>
+  <div><p class="mono tiny" data-i18n="footer.social"></p>
+    <a href="https://github.com/el3othmany" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.instagram.com/othman_hks" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="mailto:vsmode63@gmail.com">Email</a></div>
+</div></footer>
+<button id="to-top" class="to-top icon-btn" type="button" hidden data-i18n-aria="ui.toTop" aria-label="العودة للأعلى"><svg class="ico" aria-hidden="true"><use href="#i-up"/></svg></button>
+</body>
+</html>
